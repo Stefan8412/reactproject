@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
      <div className="App">
-       <h1>Hi, my name is Stefan Hancar</h1>
+       <h1>Hi, my name is Stefan Hancar and I am {Math.floor(Math.random() * 30)} years old</h1>
        <p>I live in Presov</p>
        <Person />
        <Person />
