@@ -21,11 +21,18 @@ class App extends Component {
     })
   }
   render() {
+const style ={
+  backgroundColor:'white',
+  font:'inherit',
+  border:'1px solid blue',
+  padding:'8px'
+};
+
     return (
      <div className="App">
        <h1>Hi, my name is Stefan Hancar </h1>
        <p>I live in Presov</p>
-       <button onClick={this.switchNameHandler}>Switch Name</button>
+       <button style={style} onClick={this.switchNameHandler}>Switch Name</button>
        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
        <Person name ={this.state.persons[1].name} age={this.state.persons[1].age}/>
        <Person name ={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies are : programming</Person>
