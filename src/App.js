@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
+import UserOutput from './UserOutput/UserOutput';
+import UserInput from './UserInput/UserInput';
 
 class App extends Component {
   state ={
@@ -9,6 +11,9 @@ class App extends Component {
       {name:"Stefan",age:25},
       {name:"Martin",age:22},
       {name:"Peter",age:22},
+    ],
+    UserOutputs:[
+      {userName:"Web-Steve"}
     ]
   }
   switchNameHandler = () =>{
@@ -19,6 +24,13 @@ class App extends Component {
     ]
 
     })
+  }
+  usernameChangeHandler = (event) =>{
+this.setState({UserOutputs:[
+  {userName:event.target.value}
+]
+
+})
   }
   render() {
 const style ={
@@ -36,9 +48,16 @@ const style ={
        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
        <Person name ={this.state.persons[1].name} age={this.state.persons[1].age}/>
        <Person name ={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies are : programming</Person>
+       <UserInput changed={this.usernameChangeHandler} />
+       <UserOutput userName={this.state.UserOutputs[0].userName} />
+       <UserOutput userName={this.state.UserOutputs[0].userName} />
+       <UserOutput userName="Steve" />
       </div>);
    //  return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi,I \'m Stefan'));
+  
+   
+
   }
-}
+ }
 
 export default App;
