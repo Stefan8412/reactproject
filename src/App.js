@@ -48,7 +48,7 @@ const style ={
        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
        <Person name ={this.state.persons[1].name} age={this.state.persons[1].age}/>
        <Person name ={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies are : programming</Person>
-       <UserInput changed={this.usernameChangeHandler} />
+       <UserInput changed={this.usernameChangeHandler} currentName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
        <UserOutput userName="Steve" />
