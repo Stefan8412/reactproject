@@ -16,13 +16,23 @@ class App extends Component {
       {userName:"Web-Steve"}
     ]
   }
-  switchNameHandler = () =>{
+  switchNameHandler = (newName) =>{
     this.setState({persons:[
-      {name:"Steve",age:25},
+      {name:newName,age:25},
       {name:"Martin",age:22},
       {name:"Peter",age:22}
     ]
 
+    })
+  }
+  namechangeHandler = (event )=>{
+    this.setState({
+      persons:[
+        {name:"steve",age:25},
+        {name:event.target.value,age:22},
+        {name:'Peter',age:22}
+
+      ]
     })
   }
   usernameChangeHandler = (event) =>{
@@ -44,10 +54,13 @@ const style ={
      <div className="App">
        <h1>Hi, my name is Stefan Hancar </h1>
        <p>I live in Presov</p>
-       <button style={style} onClick={this.switchNameHandler}>Switch Name</button>
-       <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+       <button style={style} onClick={()=>this.togglePersonsHandler}>Switch Name</button>
+       <div>
+       <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this,"Stefan")} changed={this.namechangeHandler} />
        <Person name ={this.state.persons[1].name} age={this.state.persons[1].age}/>
        <Person name ={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies are : programming</Person>
+       </div>
+      
        <UserInput changed={this.usernameChangeHandler} currentName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
