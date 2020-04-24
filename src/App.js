@@ -54,19 +54,23 @@ const style ={
   border:'1px solid blue',
   padding:'8px'
 };
-
+let persons = null;
+if (this.state.showPersons){
+  persons=(
+    <div>
+    <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this,"Stefan")} changed={this.namechangeHandler} />
+    <Person name ={this.state.persons[1].name} age={this.state.persons[1].age}/>
+    <Person name ={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies are : programming</Person>
+    </div>
+  );
+}
+//list style {this.setState.persons.map(person=>{return <Person name={person.name} age={person.age}/>})} 
     return (
      <div className="App">
        <h1>Hi, my name is Stefan Hancar </h1>
        <p>I live in Presov</p>
        <button style={style} onClick={this.togglePersonsHandler}>Toggle Name</button>
-       { this.state.showPersons ===true ?
-         <div >
-       <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this,"Stefan")} changed={this.namechangeHandler} />
-       <Person name ={this.state.persons[1].name} age={this.state.persons[1].age}/>
-       <Person name ={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies are : programming</Person>
-       </div> :null
-       }
+       {persons}
       
        <UserInput changed={this.usernameChangeHandler} currentName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
