@@ -12,6 +12,7 @@ class App extends Component {
       {name:"Martin",age:22},
       {name:"Peter",age:22},
     ],
+    showPerson:false,
     UserOutputs:[
       {userName:"Web-Steve"}
     ]
@@ -42,6 +43,10 @@ this.setState({UserOutputs:[
 
 })
   }
+  togglePersonsHandler=()=>{
+const doesShow = this.state.showPersons;
+this.setState({showPersons:!doesShow});
+  }
   render() {
 const style ={
   backgroundColor:'white',
@@ -54,12 +59,14 @@ const style ={
      <div className="App">
        <h1>Hi, my name is Stefan Hancar </h1>
        <p>I live in Presov</p>
-       <button style={style} onClick={()=>this.togglePersonsHandler}>Switch Name</button>
-       <div>
+       <button style={style} onClick={this.togglePersonsHandler}>Toggle Name</button>
+       { this.state.showPersons ===true ?
+         <div >
        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this,"Stefan")} changed={this.namechangeHandler} />
        <Person name ={this.state.persons[1].name} age={this.state.persons[1].age}/>
        <Person name ={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies are : programming</Person>
-       </div>
+       </div> :null
+       }
       
        <UserInput changed={this.usernameChangeHandler} currentName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
