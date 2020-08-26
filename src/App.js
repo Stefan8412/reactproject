@@ -4,6 +4,17 @@ import './App.css';
 import Person from './Person/Person';
 import UserOutput from './UserOutput/UserOutput';
 import UserInput from './UserInput/UserInput';
+import styled from 'styled-components'
+
+const AppWrapper = styled.div`
+  text-align: center;
+`
+const AppHeader = styled.div`
+  background-color: #222;
+  height: 12rem;
+  padding: 1rem;
+  color: white;
+`
 
 class App extends Component {
   state ={
@@ -66,17 +77,20 @@ if (this.state.showPersons){
 }
 //list style {this.setState.persons.map(person=>{return <Person name={person.name} age={person.age}/>})} 
     return (
-     <div className="App">
+     <AppWrapper>
+       <AppHeader>
        <h1>Hi, my name is Stefan Hancar </h1>
        <p>I live in Presov</p>
+       </AppHeader>
        <button style={style} onClick={this.togglePersonsHandler}>Toggle Name</button>
        {persons}
+      
       
        <UserInput changed={this.usernameChangeHandler} currentName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
        <UserOutput userName={this.state.UserOutputs[0].userName} />
        <UserOutput userName="Steve" />
-      </div>);
+      </AppWrapper>);
    //  return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi,I \'m Stefan'));
   
    
